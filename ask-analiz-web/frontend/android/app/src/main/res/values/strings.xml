@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">AskAnaliz</string>
+    <string name="title_activity_main">AskAnaliz</string>
+    <string name="package_name">com.askanaliz.app</string>
+    <string name="custom_url_scheme">com.askanaliz.app</string>
+</resources>

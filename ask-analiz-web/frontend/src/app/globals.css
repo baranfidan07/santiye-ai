@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+/* Dark mode (default) */
+:root {
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-poppins);
+  --background: #09090b;
+  --foreground: #fafafa;
+  --card: #18181b;
+  --card-foreground: #fafafa;
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+  --border: #27272a;
+  --accent: #6366f1;
+}
+
+/* Light mode styling removed */
+
+body {
+  font-family: var(--font-sans), sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display), sans-serif;
+}
+
+body {
+  background: transparent;
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  overflow: hidden;
+  /* position: fixed; removed to fix scrolling issues */
+}
+
+/* Custom Scrollbar for Dark Mode */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+  /* zinc-700 */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+  /* zinc-600 */
+}
+
+/* ============================================
+   MESH GRADIENT BACKGROUND (Slow, Soothing)
+   ============================================ */
+.mesh-gradient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(99, 102, 241, 0.15), transparent),
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(168, 85, 247, 0.12), transparent),
+    radial-gradient(ellipse 50% 40% at 50% 80%, rgba(236, 72, 153, 0.08), transparent),
+    var(--background);
+  animation: meshShift 20s ease-in-out infinite;
+}
+
+@keyframes meshShift {
+
+  0%,
+  100% {
+    background-position: 0% 0%, 100% 0%, 50% 100%;
+    opacity: 1;
+  }
+
+  25% {
+    background-position: 20% 20%, 80% 30%, 40% 90%;
+    opacity: 0.95;
+  }
+
+  50% {
+    background-position: 40% 10%, 60% 50%, 60% 80%;
+    opacity: 1;
+  }
+
+  75% {
+    background-position: 10% 30%, 90% 20%, 50% 95%;
+    opacity: 0.95;
+  }
+}
+
+/* ============================================
+   BREATHING ANIMATION (Subtle, Alive)
+   ============================================ */
+.btn-breathe {
+  animation: breathe 4s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.btn-breathe:hover {
+  animation-play-state: paused;
+  transform: scale(1.02);
+}
+
+.btn-breathe:disabled {
+  animation: none;
+}
+
+@keyframes breathe {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 20px 4px rgba(99, 102, 241, 0.2);
+    transform: scale(1.01);
+  }
+}
+
+/* Gradient shimmer effect for special buttons */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+
+  50%,
+  100% {
+    left: 100%;
+  }
+}
