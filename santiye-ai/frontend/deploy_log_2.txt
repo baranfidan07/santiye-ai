@@ -1,0 +1,135 @@
+﻿node.exe : Vercel CLI 50.1.3
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" "C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpe 
+   cified: (Vercel CLI 50.1.3:Strin  
+  g) [], RemoteException
+    + FullyQualifiedErrorId : Native 
+   CommandError
+ 
+Retrieving projectΓÇª
+Deploying 
+barans-projects-4228ceb7/frontend
+Uploading [--------------------] 
+(0.0B/1.1KB)
+Uploading [====================] 
+(1.1KB/1.1KB)
+Inspect: https://vercel.com/barans-pr
+ojects-4228ceb7/frontend/D2wSpgvMNS2a
+qdqxyP3kfYizpdb1 [2s]
+Production: https://frontend-96n35art
+j-barans-projects-4228ceb7.vercel.app
+ [2s]
+Queued...
+Queued...
+Building: Running build in Portland, 
+USA (West) ΓÇô pdx1
+Building: Build machine 
+configuration: 2 cores, 8 GB
+Building: Retrieving list of 
+deployment files...
+Building: Previous build caches not 
+available.
+Building: Downloading 141 deployment 
+files...
+Building: Running "vercel build"
+Building: Vercel CLI 50.1.3
+Building: Installing dependencies...
+Building: npm warn deprecated 
+node-domexception@1.0.0: Use your 
+platform's native DOMException 
+instead
+Building: npm warn deprecated @supaba
+se/auth-helpers-nextjs@0.15.0: 
+Package no longer supported. Contact 
+Support at 
+https://www.npmjs.com/support for 
+more info.
+Building: added 637 packages in 17s
+Building: 184 packages are looking 
+for funding
+Building: run `npm fund` for details
+Building: Detected Next.js version: 
+16.0.10
+Building: Running "npm run build"
+Building: > frontend@0.1.0 build
+Building: > next build
+Building: Attention: Next.js now 
+collects completely anonymous 
+telemetry regarding usage.
+Building: This information is used 
+to shape Next.js' roadmap and 
+prioritize features.
+Building: You can learn more, 
+including how to opt-out if you'd 
+not like to participate in this 
+anonymous program, by visiting the 
+following URL:
+Building: 
+https://nextjs.org/telemetry
+Building: Γû▓ Next.js 16.0.10 
+(Turbopack)
+Building: ΓÜá The "middleware" file 
+convention is deprecated. Please use 
+"proxy" instead. Learn more: https://
+nextjs.org/docs/messages/middleware-t
+o-proxy
+Building: Creating an optimized 
+production build ...
+Building: Γ£ô Compiled successfully 
+in 20.9s
+Building: Running TypeScript ...
+Building: Collecting page data using 
+1 worker ...
+Building: Error: Failed to collect 
+configuration for 
+/[locale]/confessions
+Building: at ignore-listed frames {
+Building: [cause]: Error: 
+supabaseUrl is required.
+Building: at c.validateSupabaseUrl (.
+next/server/chunks/ssr/_b31baf9e._.js
+:24:44782)
+Building: at new c.default (.next/ser
+ver/chunks/ssr/_b31baf9e._.js:37:4177
+3)
+Building: at c.createClient (.next/se
+rver/chunks/ssr/_b31baf9e._.js:37:468
+00)
+Building: at module evaluation (.next
+/server/chunks/ssr/_b31baf9e._.js:55:
+41323)
+Building: at instantiateModule (.next
+/server/chunks/ssr/[turbopack]_runtim
+e.js:715:9)
+Building: at 
+getOrInstantiateModuleFromParent (.ne
+xt/server/chunks/ssr/[turbopack]_runt
+ime.js:738:12)
+Building: at Context.esmImport [as 
+i] (.next/server/chunks/ssr/[turbopac
+k]_runtime.js:228:20)
+Building: at module evaluation (.next
+/server/chunks/ssr/_ca1ed1f4._.js:1:3
+3)
+Building: at instantiateModule (.next
+/server/chunks/ssr/[turbopack]_runtim
+e.js:715:9)
+Building: at 
+getOrInstantiateModuleFromParent (.ne
+xt/server/chunks/ssr/[turbopack]_runt
+ime.js:738:12)
+Building: }
+Building: > Build error occurred
+Building: Error: Failed to collect 
+page data for /[locale]/confessions
+Building: at ignore-listed frames {
+Building: type: 'Error'
+Building: }
+Error: Command "npm run build" 
+exited with 1
+https://frontend-96n35artj-barans-projects-4228ceb7.vercel.app

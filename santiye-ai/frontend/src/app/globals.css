@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-poppins);
+
+  /* Construction Theme Palette */
+  --background: #0a0a0a;
+  /* Asphalt Black */
+  --foreground: #ededed;
+  /* High Visibility White */
+
+  --card: #171717;
+  /* Dark Concrete */
+  --card-foreground: #ededed;
+
+  --muted: #262626;
+  /* Dark Grey */
+  --muted-foreground: #a3a3a3;
+  /* Cement Grey */
+
+  --border: #404040;
+  /* Steel Grey */
+
+  /* SAFETY ORANGE - The core identity */
+  --accent: #ff6d00;
+  --accent-foreground: #000000;
+
+  --warning: #ffb300;
+  /* Hazardous Yellow */
+  --danger: #dc2626;
+  /* Stop Red */
+}
+
+body {
+  font-family: var(--font-sans), sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display), sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Custom Scrollbar - Industrial Look */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #171717;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #404040;
+  border: 1px solid #171717;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff6d00;
+}
+
+/* ============================================
+   BACKGROUND: Subtle Concrete Texture
+   ============================================ */
+.mesh-gradient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--background);
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(40, 40, 40, 0.4) 0%, transparent 50%),
+    repeating-linear-gradient(45deg,
+      rgba(255, 109, 0, 0.03) 0px,
+      rgba(255, 109, 0, 0.03) 2px,
+      transparent 2px,
+      transparent 10px);
+}
+
+/* ============================================
+   BUTTON ANIMATIONS (Safety Pulse)
+   ============================================ */
+.btn-breathe {
+  animation: safetyPulse 3s infinite;
+}
+
+@keyframes safetyPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 109, 0, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 109, 0, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 109, 0, 0);
+  }
+}
+
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent);
+  transform: skewX(-20deg);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 200%;
+  }
+}

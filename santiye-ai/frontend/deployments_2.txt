@@ -1,0 +1,15 @@
+Vercel CLI 50.1.3
+Retrieving project…
+Fetching deployments in barans-projects-4228ceb7
+> Deployments for barans-projects-4228ceb7/frontend [327ms]
+
+  Age     Deployment                                                         Status      Environment     Duration     Username         
+  2m      https://frontend-3x7yhlo0g-barans-projects-4228ceb7.vercel.app     ● Error     Production      56s          baranfidan07     
+  4m      https://frontend-equv0tx3o-barans-projects-4228ceb7.vercel.app     ● Error     Production      54s          baranfidan07     
+  6m      https://frontend-m1cnrl7zo-barans-projects-4228ceb7.vercel.app     ● Error     Production      55s          baranfidan07     
+  8m      https://frontend-m3bck4oad-barans-projects-4228ceb7.vercel.app     ● Error     Production      54s          baranfidan07     
+
+https://frontend-3x7yhlo0g-barans-projects-4228ceb7.vercel.app
+https://frontend-equv0tx3o-barans-projects-4228ceb7.vercel.app
+https://frontend-m1cnrl7zo-barans-projects-4228ceb7.vercel.app
+https://frontend-m3bck4oad-barans-projects-4228ceb7.vercel.app

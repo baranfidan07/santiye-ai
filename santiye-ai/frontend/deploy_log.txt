@@ -1,0 +1,128 @@
+﻿node.exe : Vercel CLI 50.1.3
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" "C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpe 
+   cified: (Vercel CLI 50.1.3:Strin  
+  g) [], RemoteException
+    + FullyQualifiedErrorId : Native 
+   CommandError
+ 
+Retrieving projectΓÇª
+Deploying 
+barans-projects-4228ceb7/frontend
+Uploading [--------------------] 
+(0.0B/443B)
+Uploading [====================] 
+(443.0B/443B)
+Inspect: https://vercel.com/barans-pr
+ojects-4228ceb7/frontend/E4nftubxnRru
+82XWYbLCX8BtNLnT [3s]
+Production: https://frontend-m1cnrl7z
+o-barans-projects-4228ceb7.vercel.app
+ [3s]
+Queued...
+Queued...
+Building: Running build in Portland, 
+USA (West) ΓÇô pdx1
+Building: Build machine 
+configuration: 2 cores, 8 GB
+Building: Retrieving list of 
+deployment files...
+Building: Previous build caches not 
+available.
+Building: Downloading 138 deployment 
+files...
+Building: Running "vercel build"
+Building: Vercel CLI 50.1.3
+Building: Installing dependencies...
+Building: npm warn deprecated 
+node-domexception@1.0.0: Use your 
+platform's native DOMException 
+instead
+Building: npm warn deprecated @supaba
+se/auth-helpers-nextjs@0.15.0: 
+Package no longer supported. Contact 
+Support at 
+https://www.npmjs.com/support for 
+more info.
+Building: added 637 packages in 18s
+Building: 184 packages are looking 
+for funding
+Building: run `npm fund` for details
+Building: Detected Next.js version: 
+16.0.10
+Building: Running "npm run build"
+Building: > frontend@0.1.0 build
+Building: > next build
+Building: Attention: Next.js now 
+collects completely anonymous 
+telemetry regarding usage.
+Building: This information is used 
+to shape Next.js' roadmap and 
+prioritize features.
+Building: You can learn more, 
+including how to opt-out if you'd 
+not like to participate in this 
+anonymous program, by visiting the 
+following URL:
+Building: 
+https://nextjs.org/telemetry
+Building: Γû▓ Next.js 16.0.10 
+(Turbopack)
+Building: ΓÜá The "middleware" file 
+convention is deprecated. Please use 
+"proxy" instead. Learn more: https://
+nextjs.org/docs/messages/middleware-t
+o-proxy
+Building: Creating an optimized 
+production build ...
+Building: Γ£ô Compiled successfully 
+in 22.6s
+Building: Running TypeScript ...
+Building: Collecting page data using 
+1 worker ...
+Building: Error 
+[IllegalArgumentError]: 
+[VertexAI.IllegalArgumentError]: 
+Unable to infer your project.Please 
+provide a project Id by one of the 
+following:
+Building: - Passing a constructor 
+argument by using new 
+VertexAI({project: my-project})
+Building: - Setting project using 
+`gcloud config set project 
+my-project`
+Building: at instantiateModule (.next
+/server/chunks/[turbopack]_runtime.js
+:715:9)
+Building: at 
+instantiateRuntimeModule (.next/serve
+r/chunks/[turbopack]_runtime.js:743:1
+2)
+Building: at 
+getOrInstantiateRuntimeModule (.next/
+server/chunks/[turbopack]_runtime.js:
+756:12)
+Building: at Object.m (.next/server/c
+hunks/[turbopack]_runtime.js:765:18)
+Building: at Object.<anonymous> (.nex
+t/server/app/api/analyze-vision/route
+.js:8:3) {
+Building: stackTrace: undefined
+Building: }
+Building: > Build error occurred
+Building: Error: Failed to collect 
+page data for /api/analyze-vision
+Building: at ignore-listed frames {
+Building: type: 'Error'
+Building: }
+Building: Error: Command "npm run 
+build" exited with 1
+Error: Command "npm run build" 
+exited with 1
+https://frontend-m1cnrl7zo-barans-projects-4228ceb7.vercel.app

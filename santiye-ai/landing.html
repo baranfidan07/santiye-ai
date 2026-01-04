@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aşk Analiz - Decode Your Relationships with Vertical AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B5CF6',
+                        'primary-dark': '#6D28D9',
+                        'bg-dark': '#0A0A0F',
+                        'bg-card': '#1A1A2E',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glow-button {
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.6), 0 0 40px rgba(139, 92, 246, 0.3);
+        }
+
+        .glow-button:hover {
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.8), 0 0 60px rgba(139, 92, 246, 0.5);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #8B5CF6, #EC4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+
+<body class="bg-bg-dark text-gray-100 antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 bg-bg-dark/80 backdrop-blur-md border-b border-purple-900/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-5.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5zm5 0c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5z" />
+                    </svg>
+                    <span class="text-xl font-bold gradient-text">Aşk Analiz</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#technology" class="text-gray-300 hover:text-primary transition">Technology</a>
+                    <a href="#features" class="text-gray-300 hover:text-primary transition">Features</a>
+                    <a href="#about" class="text-gray-300 hover:text-primary transition">About</a>
+                    <a href="https://app.askanaliz.com"
+                        class="bg-primary hover:bg-primary-dark px-6 py-2 rounded-lg font-semibold transition">Launch
+                        App</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute inset-0"
+                style="background-image: radial-gradient(circle at 2px 2px, rgba(139, 92, 246, 0.3) 1px, transparent 0); background-size: 40px 40px;">
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center">
+                <div class="inline-block mb-4">
+                    <span
+                        class="bg-primary/20 text-primary px-4 py-2 rounded-full text-sm font-semibold border border-primary/30">🚀
+                        Vertical AI for Relationships</span>
+                </div>
+
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black mb-6 leading-tight">
+                    <span class="gradient-text">Decode Your Relationships</span>
+                    <br />
+                    <span class="text-white">with Vertical AI.</span>
+                </h1>
+
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
+                    The world's first AI-powered <span class="text-primary font-semibold">Relationship Detective</span>
+                    and <span class="text-pink-500 font-semibold">Dating Coach</span>.
+                    Analyzes behavioral patterns to uncover the truth.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="https://app.askanaliz.com"
+                        class="glow-button bg-gradient-to-r from-primary to-pink-600 hover:from-primary-dark hover:to-pink-700 text-white font-bold px-10 py-4 rounded-xl text-lg transition-all duration-300 transform hover:scale-105">
+                        🔮 Launch App
+                    </a>
+                    <a href="#technology"
+                        class="bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold px-10 py-4 rounded-xl text-lg transition-all duration-300">
+                        Learn More
+                    </a>
+                </div>
+
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                    <div class="bg-bg-card/50 backdrop-blur border border-purple-900/30 rounded-2xl p-6">
+                        <div class="text-4xl font-black text-primary mb-2">120k+</div>
+                        <div class="text-sm text-gray-400">Analyses Performed</div>
+                    </div>
+                    <div class="bg-bg-card/50 backdrop-blur border border-purple-900/30 rounded-2xl p-6">
+                        <div class="text-4xl font-black text-pink-500 mb-2">98%</div>
+                        <div class="text-sm text-gray-400">Pattern Accuracy</div>
+                    </div>
+                    <div class="bg-bg-card/50 backdrop-blur border border-purple-900/30 rounded-2xl p-6">
+                        <div class="text-4xl font-black text-purple-400 mb-2">24/7</div>
+                        <div class="text-sm text-gray-400">AI Availability</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-bg-dark to-bg-card/20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl font-black mb-4">
+                    Powered by <span class="gradient-text">Advanced LLMs</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Enterprise-grade artificial intelligence fine-tuned for relationship psychology and behavioral
+                    analysis.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div
+                    class="bg-bg-card border border-purple-900/30 rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+                    <div class="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Custom Fine-Tuned Models</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Our proprietary Large Language Models are trained on millions of relationship scenarios,
+                        analyzing text sentiment, behavioral psychology patterns, and honesty markers with scientific
+                        precision.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-bg-card border border-purple-900/30 rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+                    <div class="w-16 h-16 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Data Privacy & Security</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        <span class="text-green-400 font-semibold">End-to-End Encryption</span> ensures your
+                        conversations remain private.
+                        We never store personal identifiers and comply with international data protection standards
+                        (GDPR, KVKK).
+                    </p>
+                </div>
+
+                <div
+                    class="bg-bg-card border border-purple-900/30 rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+                    <div class="w-16 h-16 bg-pink-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Real-Time Processing</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Powered by cloud infrastructure with sub-second response times.
+                        Our distributed AI pipeline processes behavioral cues instantly for actionable insights.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-bg-card border border-purple-900/30 rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+                    <div class="w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Continuous Learning</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Our models evolve through reinforcement learning from anonymized feedback,
+                        improving detection accuracy for modern communication patterns and cultural nuances.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl font-black mb-4">
+                    Three <span class="gradient-text">AI Personas</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Specialized agents designed for different relationship challenges.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1: Detective Mode -->
+                <div
+                    class="group bg-gradient-to-b from-red-900/20 to-bg-card border border-red-900/30 rounded-2xl p-8 hover:border-red-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/20 hover:-translate-y-2">
+                    <div class="text-5xl mb-4">🕵️‍♂️</div>
+                    <h3 class="text-2xl font-bold mb-4">Detective Mode</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Upload screenshots of conversations. Our AI analyzes linguistic patterns, response times,
+                        and behavioral inconsistencies to detect potential dishonesty or cheating signals.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">▹</span>
+                            <span>Screenshot OCR + Sentiment Analysis</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">▹</span>
+                            <span>Lie Detection Algorithms</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">▹</span>
+                            <span>Behavioral Pattern Recognition</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 2: Flirt Coach -->
+                <div
+                    class="group bg-gradient-to-b from-pink-900/20 to-bg-card border border-pink-900/30 rounded-2xl p-8 hover:border-pink-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-pink-500/20 hover:-translate-y-2">
+                    <div class="text-5xl mb-4">🧠</div>
+                    <h3 class="text-2xl font-bold mb-4">Flirt Coach</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Get strategic reply suggestions based on psychological compatibility data.
+                        Maximize attraction while maintaining authenticity through data-driven tactics.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-start">
+                            <span class="text-pink-500 mr-2">▹</span>
+                            <span>3 Strategic Reply Options (Bold/Cool/Romantic)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-pink-500 mr-2">▹</span>
+                            <span>Rizz Score Optimization</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-pink-500 mr-2">▹</span>
+                            <span>Psychology-Backed Tactics</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 3: Vibe Check -->
+                <div
+                    class="group bg-gradient-to-b from-purple-900/20 to-bg-card border border-purple-900/30 rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2">
+                    <div class="text-5xl mb-4">💎</div>
+                    <h3 class="text-2xl font-bold mb-4">Vibe Check</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Get an instant relationship health score (0-100).
+                        Our AI analyzes interaction dynamics and flags red flags before they escalate.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2">▹</span>
+                            <span>Toxicity Meter (Real-Time)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2">▹</span>
+                            <span>Red Flag Detection</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2">▹</span>
+                            <span>Actionable Recommendations</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-bg-dark to-bg-card/30">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl sm:text-5xl font-black mb-6">
+                        Built by Visionaries at <span class="gradient-text">Sivas Cumhuriyet University</span>
+                    </h2>
+                    <p class="text-lg text-gray-400 mb-6 leading-relaxed">
+                        We are a team of <span class="text-primary font-semibold">sociology</span> and
+                        <span class="text-pink-500 font-semibold">engineering students</span> bridging the gap between
+                        human psychology and artificial intelligence.
+                    </p>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        Our mission is to democratize relationship intelligence through cutting-edge AI,
+                        empowering individuals to make informed decisions about their personal lives.
+                    </p>
+
+                    <div class="bg-bg-card border border-purple-900/30 rounded-xl p-6">
+                        <div class="flex items-center space-x-4">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-br from-primary to-pink-600 rounded-full flex items-center justify-center text-2xl font-black text-white">
+                                BA
+                            </div>
+                            <div>
+                                <div class="font-bold text-lg">Baran Fidan</div>
+                                <div class="text-sm text-gray-500">Founder & CEO</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-bg-card border border-purple-900/30 rounded-xl p-6">
+                        <h4 class="text-lg font-bold mb-2 text-primary">🎓 Academic Foundation</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Grounded in behavioral psychology research and computational linguistics from Turkey's
+                            leading universities.
+                        </p>
+                    </div>
+                    <div class="bg-bg-card border border-purple-900/30 rounded-xl p-6">
+                        <h4 class="text-lg font-bold mb-2 text-pink-500">🚀 Innovation First</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Pioneering the world's first Vertical AI platform specifically designed for relationship
+                            intelligence and behavioral analysis.
+                        </p>
+                    </div>
+                    <div class="bg-bg-card border border-purple-900/30 rounded-xl p-6">
+                        <h4 class="text-lg font-bold mb-2 text-purple-400">🌍 Global Impact</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Serving users across 15+ countries with multilingual support and culturally-aware AI models.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl sm:text-5xl font-black mb-6">
+                Ready to <span class="gradient-text">Decode the Truth?</span>
+            </h2>
+            <p class="text-xl text-gray-400 mb-10">
+                Join thousands of users who trust AI to navigate modern relationships.
+            </p>
+            <a href="https://app.askanaliz.com"
+                class="glow-button bg-gradient-to-r from-primary to-pink-600 hover:from-primary-dark hover:to-pink-700 text-white font-bold px-12 py-5 rounded-xl text-xl transition-all duration-300 transform hover:scale-105 inline-block">
+                🚀 Launch App Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-bg-card border-t border-purple-900/30 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-5.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5zm5 0c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5z" />
+                        </svg>
+                        <span class="text-xl font-bold gradient-text">Aşk Analiz</span>
+                    </div>
+                    <p class="text-gray-400 text-sm max-w-md">
+                        The world's first Vertical AI platform for relationship intelligence.
+                        Powered by advanced Large Language Models and behavioral psychology research.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4 text-primary">Legal</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="https://app.askanaliz.com/privacy" class="hover:text-primary transition">Privacy
+                                Policy</a></li>
+                        <li><a href="https://app.askanaliz.com/terms" class="hover:text-primary transition">Terms of
+                                Service</a></li>
+                        <li><a href="https://app.askanaliz.com/gdpr" class="hover:text-primary transition">GDPR
+                                Compliance</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4 text-primary">Contact</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>
+                            <a href="mailto:info@askanaliz.com" class="hover:text-primary transition flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                info@askanaliz.com
+                            </a>
+                        </li>
+                        <li class="text-gray-500">Sivas Cumhuriyet University</li>
+                        <li class="text-gray-500">Sivas, Turkey</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-purple-900/30 pt-8 text-center text-sm text-gray-500">
+                <p>&copy; 2026 Aşk Analiz Inc. All rights reserved. Powered by Vertical AI.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
