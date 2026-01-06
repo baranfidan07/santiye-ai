@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import ConfessionCard from "./ConfessionCard";
 import { supabase } from "@/lib/supabase";
-import { m, AnimatePresence, useMotionValue, useTransform, PanInfo } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useTransform, PanInfo } from "framer-motion";
 import { X, Heart, MessageCircle, LogIn } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 import { getVoteType, DEFAULT_VOTE_TYPE } from "@/lib/voteTypes";
@@ -201,31 +201,31 @@ export default function ConfessionFeed({ initialConfessions = [] }: ConfessionFe
             {/* Toast Notification */}
             <AnimatePresence>
                 {showToast && (
-                    <m.div
+                    <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         className={`absolute top-20 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full shadow-xl font-bold text-sm whitespace-nowrap ${showToast.type === 'success'
-                                ? 'bg-emerald-500 text-white shadow-emerald-500/20'
-                                : 'bg-red-500 text-white shadow-red-500/20'
+                            ? 'bg-emerald-500 text-white shadow-emerald-500/20'
+                            : 'bg-red-500 text-white shadow-red-500/20'
                             }`}
                     >
                         {showToast.message}
-                    </m.div>
+                    </motion.div>
                 )}
             </AnimatePresence>
 
             {/* Login Prompt Modal */}
             <AnimatePresence>
                 {showLoginPrompt && (
-                    <m.div
+                    <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
                         onClick={() => setShowLoginPrompt(false)}
                     >
-                        <m.div
+                        <motion.div
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.9, opacity: 0 }}
@@ -257,8 +257,8 @@ export default function ConfessionFeed({ initialConfessions = [] }: ConfessionFe
                                     {locale === 'tr' ? 'Giriş Yap' : 'Login'}
                                 </button>
                             </div>
-                        </m.div>
-                    </m.div>
+                        </motion.div>
+                    </motion.div>
                 )}
             </AnimatePresence>
 
@@ -272,14 +272,14 @@ export default function ConfessionFeed({ initialConfessions = [] }: ConfessionFe
             </div>
 
             {/* FAB - Small Circle Icon */}
-            <m.button
+            <motion.button
                 onClick={() => setIsModalOpen(true)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 className="fixed bottom-24 right-4 z-40 w-12 h-12 bg-indigo-600 hover:bg-indigo-500 rounded-full flex items-center justify-center shadow-lg shadow-indigo-500/30"
             >
                 <Plus size={24} strokeWidth={2.5} className="text-white" />
-            </m.button>
+            </motion.button>
 
             <div className="relative w-full max-w-md h-[70vh] flex items-center justify-center">
                 <AnimatePresence>
@@ -399,7 +399,7 @@ function SwipeableCard({ confession, onSwipe, isTop, total, isLoggedIn, onLoginR
     };
 
     return (
-        <m.div
+        <motion.div
             className="absolute top-0 left-0 w-full h-full flex items-center justify-center perspective-1000"
             style={{
                 x: isTop ? x : 0,
@@ -426,34 +426,34 @@ function SwipeableCard({ confession, onSwipe, isTop, total, isLoggedIn, onLoginR
             {isTop && (
                 <>
                     {/* RIGHT SWIPE OVERLAY */}
-                    <m.div
+                    <motion.div
                         style={{ opacity: validOpacity }}
                         className={`absolute top-10 left-10 z-50 pointer-events-none -rotate-12 border-4 ${voteConfig.right.border} rounded-xl px-4 py-2`}
                     >
                         <span className={`text-3xl font-black ${voteConfig.right.color} uppercase tracking-widest whitespace-nowrap`}>
                             {voteConfig.right.label}
                         </span>
-                    </m.div>
+                    </motion.div>
 
                     {/* LEFT SWIPE OVERLAY */}
-                    <m.div
+                    <motion.div
                         style={{ opacity: troubleOpacity }}
                         className={`absolute top-10 right-10 z-50 pointer-events-none rotate-12 border-4 ${voteConfig.left.border} rounded-xl px-4 py-2`}
                     >
                         <span className={`text-3xl font-black ${voteConfig.left.color} uppercase tracking-widest whitespace-nowrap`}>
                             {voteConfig.left.label}
                         </span>
-                    </m.div>
+                    </motion.div>
 
                     {/* SKIP (Up) */}
-                    <m.div
+                    <motion.div
                         style={{ opacity: commentOpacity }}
                         className="absolute bottom-20 left-0 right-0 flex justify-center z-50 pointer-events-none"
                     >
                         <div className="bg-zinc-600 text-white px-6 py-2 rounded-full font-bold shadow-xl flex items-center gap-2">
                             ⏭️ {locale === 'tr' ? 'Atla' : 'Skip'}
                         </div>
-                    </m.div>
+                    </motion.div>
                 </>
             )}
 
@@ -470,6 +470,6 @@ function SwipeableCard({ confession, onSwipe, isTop, total, isLoggedIn, onLoginR
                 forceDrawerOpen={isCommentsOpen}
                 onDrawerClose={() => setCommentsOpen(false)}
             />
-        </m.div>
+        </motion.div>
     );
 }

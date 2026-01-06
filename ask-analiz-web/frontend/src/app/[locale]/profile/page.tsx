@@ -9,6 +9,8 @@ import { motion } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { cn } from "@/lib/utils";
 import { useCredits } from "@/contexts/CreditsContext";
+import UserConfessionsList from "@/components/profile/UserConfessionsList";
+import NotificationsList from "@/components/profile/NotificationsList";
 
 interface ProfileStats {
     analysisCount: number;
@@ -37,64 +39,6 @@ export default function ProfilePage() {
     useEffect(() => {
         const savedNotifications = localStorage.getItem('notifications');
         if (savedNotifications !== null) setNotifications(savedNotifications === 'true');
-    }, []);
-
-    useEffect(() => {
-        let mounted = true;
-
-        const init = async () => {
-            console.log("Profile: init started");
-            const { data: { session }, error } = await supabase.auth.getSession();
-
-            console.log("Profile: session check done", session?.user?.email, error);
-
-            if (!mounted) return;
-
-            // Always set loading false first
-            setLoading(false);
-
-            if (session?.user) {
-                setUser(session.user);
-                userIdRef.current = session.user.id;
-                // Fetch stats in background (don't block rendering)
-                fetchUserStats(session.user.id);
-            }
-
-            console.log("Profile: init complete");
-        };
-
-        init();
-
-        const { data: authListener } = supabase.auth.onAuthStateChange(async (event, session) => {
-            if (!mounted) return;
-
-            // Handle login/account switch
-            if (event === 'SIGNED_IN' && session?.user) {
-                setUser(session.user);
-                userIdRef.current = session.user.id;
-                setLoading(false);
-                fetchUserStats(session.user.id);
-            }
-            // Handle logout
-            else if (event === 'SIGNED_OUT' || !session?.user) {
-                setUser(null);
-                userIdRef.current = null;
-                setStats({ analysisCount: 0, confessionCount: 0, auraPoints: 0 });
-            }
-            // Handle token refresh (same user, just refreshed session)
-            else if (event === 'TOKEN_REFRESHED' && session?.user) {
-                // Don't refetch, just ensure user is set
-                if (!user) {
-                    setUser(session.user);
-                    userIdRef.current = session.user.id;
-                }
-            }
-        });
-
-        return () => {
-            mounted = false;
-            authListener.subscription.unsubscribe();
-        };
     }, []);
 
     const fetchUserStats = async (userId: string) => {
@@ -130,16 +74,75 @@ export default function ProfilePage() {
     };
 
     useEffect(() => {
-        // Failsafe: Force loading false after 2 seconds to prevent eternal spinner
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 2000);
-        return () => clearTimeout(timer);
+        let mounted = true;
+        let timeoutId: NodeJS.Timeout;
+
+        const init = async () => {
+            console.log("Profile: init started");
+            try {
+                // Failsafe: Force loading false after 4 seconds to prevent eternal spinner
+                timeoutId = setTimeout(() => {
+                    if (mounted) setLoading(false);
+                    console.warn("Profile: Init timed out, forcing loading false");
+                }, 4000);
+
+                // Check active session first
+                const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+
+                if (sessionError) throw sessionError;
+
+                if (session?.user) {
+                    if (mounted) {
+                        setUser(session.user);
+                        // Don't await stats, let them load in parallel
+                        fetchUserStats(session.user.id);
+                    }
+                } else {
+                    // Double check with getUser for security (sometimes session is stale but valid on server)
+                    const { data: { user }, error: userError } = await supabase.auth.getUser();
+                    if (user && mounted) {
+                        setUser(user);
+                        fetchUserStats(user.id);
+                    }
+                }
+            } catch (error) {
+                console.error("Profile: Init error", error);
+            } finally {
+                if (mounted) {
+                    setLoading(false);
+                    clearTimeout(timeoutId);
+                }
+                console.log("Profile: init complete");
+            }
+        };
+
+        init();
+
+        const { data: authListener } = supabase.auth.onAuthStateChange(async (event, session) => {
+            if (!mounted) return;
+            console.log("Profile: Auth change", event);
+
+            if (event === 'SIGNED_IN' && session?.user) {
+                setUser(session.user);
+                setLoading(false);
+                fetchUserStats(session.user.id);
+            } else if (event === 'SIGNED_OUT') {
+                setUser(null);
+                setStats({ analysisCount: 0, confessionCount: 0, auraPoints: 0 });
+            }
+        });
+
+        return () => {
+            mounted = false;
+            clearTimeout(timeoutId);
+            authListener.subscription.unsubscribe();
+        };
     }, []);
 
     const handleLogout = async () => {
         await supabase.auth.signOut();
-        router.replace("/login");
+        // Force hard refresh to clear all states/cache
+        window.location.href = "/login";
     };
 
     const handleLanguageChange = (newLocale: 'tr' | 'en') => {
@@ -205,6 +208,11 @@ export default function ProfilePage() {
                 </div>
             </div>
 
+            {/* Notifications */}
+            <div className="px-4 md:px-6 mb-6">
+                <NotificationsList userId={user.id} />
+            </div>
+
             {/* Stats */}
             <div className="px-4 md:px-6 mb-4 md:mb-8">
                 <div className="grid grid-cols-2 gap-3 md:gap-4">
@@ -255,6 +263,11 @@ export default function ProfilePage() {
                         </div>
                     </div>
                 </div>
+            </div>
+
+            {/* User's Confessions Scoreboard */}
+            <div className="px-4 md:px-6 mb-8">
+                <UserConfessionsList userId={user.id} />
             </div>
 
             {/* Settings Section */}

@@ -28,7 +28,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
             </Suspense>
 
             {/* Main Content Area */}
-            <main className="flex-1 w-full relative overflow-hidden flex flex-col">
+            <main className="flex-1 w-full relative overflow-y-auto overflow-x-hidden flex flex-col scroll-smooth">
                 {children}
             </main>
 

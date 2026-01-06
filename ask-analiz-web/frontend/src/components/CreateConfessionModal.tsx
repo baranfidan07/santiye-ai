@@ -8,6 +8,8 @@ import { cn } from "@/lib/utils";
 import { useTranslations, useLocale } from "next-intl";
 import { VOTE_TYPES } from "@/lib/voteTypes";
 
+import { useCredits } from "@/contexts/CreditsContext";
+
 // Map categories to appropriate vote types
 const CATEGORY_VOTE_MAP: Record<string, string[]> = {
     "İlişki": ["red_flag", "stay_or_leave", "toxic_or_valid", "set_boundary"],
@@ -115,6 +117,7 @@ export default function CreateConfessionModal({ isOpen, onClose, onSuccess, defa
     const t = useTranslations('jury_modal');
     const tCat = useTranslations('categories');
     const locale = useLocale();
+    const { addReward } = useCredits(); // Import addReward
 
     // Categories definition inside component to use hooks
     const CATEGORIES = [
@@ -183,6 +186,10 @@ export default function CreateConfessionModal({ isOpen, onClose, onSuccess, defa
             setContent("");
             setTitle("");
             setSelectedCategory("İlişki");
+
+            // Reward the user
+            await addReward(3);
+
             onSuccess();
             onClose();
         } catch (error: any) {

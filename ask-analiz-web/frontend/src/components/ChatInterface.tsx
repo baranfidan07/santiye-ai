@@ -157,16 +157,38 @@ export default function ChatInterface() {
         fetchMessages();
     }, [sessionId, user]);
 
-    // GHOST SESSION: Save messages to localStorage if guest
+    // GHOST SESSION: Save messages to localStorage if guest (Safe Limit)
     useEffect(() => {
         if (!user && messages.length > 0 && !isLoading) {
+            // Keep only last 30 messages to prevent localStorage quota issues
+            const safeMessages = messages.slice(-30);
             localStorage.setItem('ghost_session', JSON.stringify({
-                messages,
+                messages: safeMessages,
                 persona: selectedPersona,
                 timestamp: Date.now()
             }));
         }
     }, [messages, user, isLoading, selectedPersona]);
+
+    // GHOST SESSION: RESTORE FOR GUESTS (Navigation Persistence)
+    useEffect(() => {
+        if (!user && !sessionId && messages.length === 0) {
+            const ghostData = localStorage.getItem('ghost_session');
+            if (ghostData) {
+                try {
+                    const parsed = JSON.parse(ghostData);
+                    // Check if timestamp is recent (e.g., last 24 hours) - Optional, effectively "Keep until cleared"
+                    if (parsed.messages && parsed.messages.length > 0) {
+                        console.log("Restoring guest session...");
+                        setMessages(parsed.messages);
+                        if (parsed.persona) setSelectedPersona(parsed.persona);
+                    }
+                } catch (e) {
+                    console.error("Failed to restore guest session", e);
+                }
+            }
+        }
+    }, [user, sessionId]);
 
     // GHOST SESSION: Restore if exists after login
     useEffect(() => {

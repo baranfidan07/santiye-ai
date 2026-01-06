@@ -26,8 +26,13 @@ export default function BottomNav() {
         return () => subscription.unsubscribe();
     }, []);
 
+    // Hide BottomNav on Landing Page (root) or pure locale paths (/tr, /en)
+    if (pathname === "/" || pathname === "/tr" || pathname === "/en") {
+        return null;
+    }
+
     const navItems = [
-        { label: t('chat'), href: "/", icon: Sparkles },
+        { label: t('chat'), href: "/app", icon: Sparkles }, // Points to /app for Chat Interface
         { label: t('feed'), href: "/confessions", icon: Flame },
         { label: t('quizzes'), href: "/quizzes", icon: FlaskConical },
         {
@@ -40,7 +45,14 @@ export default function BottomNav() {
     return (
         <div className="w-full min-h-[4rem] h-auto border-t flex-none flex items-center justify-around z-50 pb-[env(safe-area-inset-bottom)] pt-1 bg-zinc-900 border-zinc-800">
             {navItems.map((item) => {
-                const isActive = pathname === item.href || (item.label === t('profile') && (pathname === "/login" || pathname === "/profile"));
+                // Active state logic:
+                // Chat active if pathname is exactly /app
+                // Profile active if /profile or /login
+                const isActive =
+                    (item.href === "/app" && pathname === "/app") ||
+                    (item.href !== "/app" && pathname === item.href) ||
+                    (item.label === t('profile') && (pathname === "/login" || pathname === "/profile"));
+
                 const Icon = item.icon;
 
                 return (

@@ -1,6 +1,6 @@
 "use client";
 
-import { m, useSpring, useTransform, animate } from "framer-motion";
+import { motion, useSpring, useTransform, animate } from "framer-motion";
 import { useState, useEffect, memo } from "react";
 import { cn } from "@/lib/utils";
 import { Fingerprint, Sparkles, Activity, ChevronDown } from "lucide-react";
@@ -127,7 +127,7 @@ const ConfessionCard = memo(function ConfessionCard({ id, hook, fullStory, toxic
                 WebkitPerspective: '1000px',
             }}
         >
-            <m.div
+            <motion.div
                 className="relative w-full h-full cursor-pointer"
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
                 whileTap={{ scale: 0.98 }}
@@ -149,7 +149,8 @@ const ConfessionCard = memo(function ConfessionCard({ id, hook, fullStory, toxic
                         backfaceVisibility: 'hidden',
                         WebkitBackfaceVisibility: 'hidden',
                         transform: 'rotateY(0deg)',
-                        WebkitTransform: 'rotateY(0deg)'
+                        WebkitTransform: 'rotateY(0deg)',
+                        zIndex: 10
                     }}
                 >
                     {/* Background Pattern */}
@@ -199,7 +200,8 @@ const ConfessionCard = memo(function ConfessionCard({ id, hook, fullStory, toxic
                         backfaceVisibility: 'hidden',
                         WebkitBackfaceVisibility: 'hidden',
                         transform: 'rotateY(180deg)',
-                        WebkitTransform: 'rotateY(180deg)'
+                        WebkitTransform: 'rotateY(180deg)',
+                        zIndex: 0
                     }}
                 >
                     {/* PK Vote Visualization (TikTok Style) */}
@@ -248,31 +250,31 @@ const ConfessionCard = memo(function ConfessionCard({ id, hook, fullStory, toxic
                                     <div className="relative">
                                         <div className="h-4 w-full bg-zinc-800 rounded-full overflow-hidden flex shadow-inner">
                                             {/* Red Bar (Left) */}
-                                            <m.div
+                                            <motion.div
                                                 className={`h-full bg-gradient-to-r ${voteConfig.left.gradient} relative`}
                                                 initial={{ width: "50%" }}
                                                 animate={{ width: `${dislikePercentage}%` }}
                                                 transition={{ type: "spring", stiffness: 100 }}
                                             >
                                                 <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%)] bg-[length:10px_10px]" />
-                                            </m.div>
+                                            </motion.div>
 
                                             {/* Green Bar (Right) */}
-                                            <m.div
+                                            <motion.div
                                                 className={`h-full flex-1 bg-gradient-to-l ${voteConfig.right.gradient} relative`}
                                             >
                                                 <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%)] bg-[length:10px_10px]" />
-                                            </m.div>
+                                            </motion.div>
                                         </div>
 
                                         {/* VS Badge - centered at the junction point */}
-                                        <m.div
+                                        <motion.div
                                             className="absolute top-1/2 -translate-y-1/2 z-10 bg-zinc-900 border-2 border-zinc-700 rounded-full w-8 h-8 flex items-center justify-center font-black text-[10px] text-zinc-400 shadow-xl"
                                             animate={{ left: `calc(${dislikePercentage}% - 16px)` }}
                                             transition={{ type: "spring", stiffness: 100 }}
                                         >
                                             VS
-                                        </m.div>
+                                        </motion.div>
                                     </div>
                                 </>
                             );
@@ -331,7 +333,7 @@ const ConfessionCard = memo(function ConfessionCard({ id, hook, fullStory, toxic
                         </button>
                     </div>
                 </div>
-            </m.div>
+            </motion.div>
 
             {/* --- JURY ROOM DRAWER --- */}
             <CommentDrawer

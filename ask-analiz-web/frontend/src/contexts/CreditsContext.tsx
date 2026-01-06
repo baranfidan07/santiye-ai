@@ -8,7 +8,7 @@ interface CreditsContextType {
     loading: boolean;
     refreshCredits: () => Promise<void>;
     deductCredit: () => Promise<boolean>;
-    addReward: () => Promise<number | null>; // Returns new balance
+    addReward: (amount?: number) => Promise<number | null>; // Returns new balance
     showAdModal: boolean;
     setShowAdModal: (show: boolean) => void;
 }
@@ -16,7 +16,7 @@ interface CreditsContextType {
 const CreditsContext = createContext<CreditsContextType | undefined>(undefined);
 
 export function CreditsProvider({ children }: { children: React.ReactNode }) {
-    const [credits, setCredits] = useState(3);
+    const [credits, setCredits] = useState(5);
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState<any>(null);
     const [showAdModal, setShowAdModal] = useState(false);
@@ -40,7 +40,7 @@ export function CreditsProvider({ children }: { children: React.ReactNode }) {
             if (newUser) {
                 await fetchCredits(newUser.id);
             } else {
-                setCredits(3); // Default for guests (though guests don't really consume DB credits, we track local)
+                setCredits(5); // Default for guests (though guests don't really consume DB credits, we track local)
             }
         });
 
@@ -53,7 +53,7 @@ export function CreditsProvider({ children }: { children: React.ReactNode }) {
             if (data) {
                 setCredits(data.credits);
             }
-            // If profile doesn't exist yet (race condition), default is 3
+            // If profile doesn't exist yet (race condition), default is 5
         } catch (e) {
             console.error(e);
         } finally {
@@ -91,13 +91,13 @@ export function CreditsProvider({ children }: { children: React.ReactNode }) {
         return true;
     };
 
-    const addReward = async () => {
+    const addReward = async (amount: number = 1) => {
         if (!user) return null;
 
         // Optimistic
-        setCredits(prev => prev + 1);
+        setCredits(prev => prev + amount);
 
-        const { data, error } = await supabase.rpc('add_reward_credit', { user_id: user.id });
+        const { data, error } = await supabase.rpc('add_reward_credit', { user_id: user.id, amount });
         if (error) {
             console.error("Reward failed:", error);
             fetchCredits(user.id); // Re-sync

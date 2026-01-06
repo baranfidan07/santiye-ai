@@ -3,10 +3,12 @@ import { createClient } from '@supabase/supabase-js';
 import { unstable_cache } from 'next/cache';
 
 // Create a single supabase client for server-side fetching
-const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+// Create a single supabase client for server-side fetching
+// Fallback to placeholder if env vars are missing during build time
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co';
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder';
+
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const getConfessions = unstable_cache(
     async (locale: string) => {

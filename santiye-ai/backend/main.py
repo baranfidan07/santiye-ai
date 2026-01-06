@@ -12,6 +12,9 @@ from supabase import create_client, Client
 
 import base64  # Added for Image Analysis
 
+# Initialize FastAPI
+app = FastAPI()
+
 # Custom Modules
 try:
     from excel_loader import process_budget_excel

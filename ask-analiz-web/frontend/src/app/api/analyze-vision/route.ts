@@ -1,17 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 import { VertexAI } from "@google-cloud/vertexai";
 
-// Initialize Vertex AI
-const vertexAI = new VertexAI({
-    project: process.env.GOOGLE_PROJECT_ID,
-    location: 'us-central1', // Vertex AI models are often centrally located
-    googleAuthOptions: {
-        credentials: {
-            client_email: process.env.GOOGLE_CLIENT_EMAIL,
-            private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+// Helper to get Vertex AI client safely
+const getVertexAI = () => {
+    // FALLBACK PROJECT ID: 'ask-analiz-v1' (or whatever the real project ID is)
+    // If env is missing, at least provide a string so it doesn't crash the build immediately.
+    const projectId = process.env.GOOGLE_PROJECT_ID || process.env.GCS_PROJECT_ID || 'ask-analiz-2024';
+
+    // Clean private key (handle newline escapes)
+    const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n') || undefined;
+    const clientEmail = process.env.GOOGLE_CLIENT_EMAIL || undefined;
+
+    return new VertexAI({
+        project: projectId,
+        location: 'us-central1',
+        googleAuthOptions: {
+            credentials: {
+                client_email: clientEmail,
+                private_key: privateKey,
+            }
         }
-    }
-});
+    });
+};
 
 // Use the user-requested model
 // Note: Exact model ID might vary. Trying the standard convention for the requested model.
@@ -32,6 +42,7 @@ export async function POST(req: NextRequest) {
         console.log("Vision API Request Received. URI:", gsUri);
         console.log("Persona Prompt Length:", personaSystemPrompt?.length);
 
+        const vertexAI = getVertexAI();
         const generativeModel = vertexAI.getGenerativeModel({
             model: modelId,
             systemInstruction: "You are an expert image analyst. You MUST analyze the visible text, UI elements, and context in the image provided."

@@ -56,7 +56,7 @@ export default function InputArea({ input, setInput, onSubmit, isLoading, onImag
     };
 
     return (
-        <div className="w-full relative z-20 pb-6 pt-2">
+        <div className="w-full relative z-20 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-2">
             <div className="max-w-2xl mx-auto backdrop-blur-xl border-t rounded-t-[2.5rem] shadow-2xl overflow-hidden bg-zinc-900/60 border-white/5">
                 <div className="px-4 pb-2 pt-4">
                     {selectedImage && (

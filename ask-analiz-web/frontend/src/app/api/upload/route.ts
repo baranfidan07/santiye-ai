@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { gcsClient, bucketName } from "@/lib/gcs";
+import { getStorage, bucketName } from "@/lib/gcs";
 import { v4 as uuidv4 } from 'uuid';
 
 export async function POST(req: NextRequest) {
@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
 
         const buffer = Buffer.from(await file.arrayBuffer());
         const filename = `${uuidv4()}-${(file as File).name || 'image.png'}`;
-        const bucket = gcsClient.bucket(bucketName);
+        const bucket = getStorage().bucket(bucketName);
         const gcsFile = bucket.file(filename);
 
         await gcsFile.save(buffer, {

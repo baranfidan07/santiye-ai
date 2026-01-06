@@ -39,10 +39,13 @@ export default function JuryDraftCard({ intent, draftContent, onDraftOpen }: Jur
 
                     <button
                         onClick={onDraftOpen}
-                        className="mt-2 inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold py-2.5 px-4 rounded-xl transition-all active:scale-95 shadow-lg"
+                        className="mt-2 inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold py-2.5 px-4 rounded-xl transition-all active:scale-95 shadow-lg group"
                     >
-                        Taslağı Gör & Paylaş
-                        <Send size={16} />
+                        <span>Taslağı Gör & Paylaş</span>
+                        <span className="bg-black/20 text-black px-1.5 py-0.5 rounded text-[10px] font-extrabold flex items-center gap-1">
+                            +3 Kredi
+                        </span>
+                        <Send size={16} className="group-hover:translate-x-1 transition-transform" />
                     </button>
                 </div>
             </div>
