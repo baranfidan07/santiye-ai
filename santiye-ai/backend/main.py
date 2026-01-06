@@ -147,6 +147,46 @@ async def fetch_hard_facts(company_id: str):
     if not facts: return "Henüz girilmiş resmi veri yok."
     return "\n".join(facts)
 
+async def save_site_memory(content: str, company_id: str):
+    """Saves a new fact/memory to Supabase."""
+    try:
+        data = {
+            "company_id": company_id,
+            "content": content,
+            "category": "general",
+            "created_at": "now()"
+        }
+        supabase.table("site_memory").insert(data).execute()
+    except Exception as e:
+        print(f"Memory Save Error: {e}")
+
+# --- DM HISTORY ---
+async def record_dm(phone: str, company_id: str, role: str, content: str):
+    """Logs DM to supabase for history."""
+    if not company_id: return
+    try:
+        supabase.table("dm_logs").insert({
+            "phone_number": phone,
+            "company_id": company_id,
+            "role": role,
+            "content": content
+        }).execute()
+    except Exception as e:
+        print(f"DM Log Error (Table missing? Run SQL): {e}")
+
+async def fetch_dm_history(phone: str, limit=5):
+    """Fetches last N messages for context."""
+    try:
+        res = supabase.table("dm_logs").select("role, content")\
+            .eq("phone_number", phone)\
+            .order("created_at", desc=True)\
+            .limit(limit)\
+            .execute()
+        return res.data[::-1] if res.data else []
+    except Exception as e:
+        print(f"DM History Fetch Error: {e}")
+        return []
+
 async def process_chat_message(messages: List[dict], company_id: Optional[str], system_prompt: Optional[str] = None):
     try:
         # 1. Fetch Contexts
@@ -587,8 +627,37 @@ async def whatsapp_webhook(request: dict):
             
             else:
                 company_id = profile['company_id']
-                result = await process_chat_message([{"role": "user", "content": text_body}], company_id)
+                
+                # 1. LOG USER MESSAGE
+                await record_dm(phone_number, company_id, "user", text_body)
+                
+                # 2. FETCH HISTORY
+                history = await fetch_dm_history(phone_number, limit=6)
+                
+                # 3. APPEND CURRENT MESSAGE (if not already in history, usually it's not if we just inserted? 
+                # Actually we just inserted it. So 'history' might include it if we are fast enough, or not.
+                # To be safe: Filter out duplicates or just rely on 'history' + 'current' logic.
+                # 'fetch_dm_history' gets from DB. If 'record_dm' is slow/async, it might not be there.
+                # Let's assume we pass HISTORY + CURRENT manually to be safe.
+                # Actually, standard practice: Pass `history` (excluding current if possible) + `current`.
+                
+                # Let's construct the messages list properly from history
+                chat_messages = []
+                for h in history:
+                    # Skip if it's the exact same message we just sent? No, timestamps differ usually.
+                    chat_messages.append({"role": h['role'], "content": h['content']})
+                
+                # If the last message in history is NOT the current text (due to lag), append current.
+                # If it IS current, don't append.
+                # Simple hack: Just append current text only if history is empty or last item != current
+                if not chat_messages or chat_messages[-1]['content'] != text_body:
+                     chat_messages.append({"role": "user", "content": text_body})
+                
+                result = await process_chat_message(chat_messages, company_id)
                 reply_text = result['insight']
+                
+                # 4. LOG ASSISTANT REPLY
+                await record_dm(phone_number, company_id, "assistant", reply_text)
 
         # Send Reply
         if reply_text:
