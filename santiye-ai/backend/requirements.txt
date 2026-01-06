@@ -5,3 +5,6 @@ openai
 supabase
 python-dotenv
 requests
+pandas
+openpyxl
+pytz

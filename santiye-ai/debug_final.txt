@@ -1,0 +1,22 @@
+C:\Users\baran\AppData\Local\Programs\Python\Python311\Lib\site-packages\huggingface_hub\file_download.py:942: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+Python version is above 3.10, patching the collections module.
+PALANTIR SYSTEM STARTING...
+Add pad token = ['<｜▁pad▁｜>'] to the tokenizer
+<｜▁pad▁｜>:2
+Add image token = ['<image>'] to the tokenizer
+<image>:128815
+Add grounding-related tokens = ['<|ref|>', '<|/ref|>', '<|det|>', '<|/det|>', '<|grounding|>'] to the tokenizer with input_ids
+<|ref|>:128816
+<|/ref|>:128817
+<|det|>:128818
+<|/det|>:128819
+<|grounding|>:128820
+Add chat tokens = ['<|User|>', '<|Assistant|>'] to the tokenizer with input_ids
+<|User|>:128821
+<|Assistant|>:128822
+
+Kutuphane Hatasi: ValueError('`.to` is not supported for `4-bit` or `8-bit` bitsandbytes models. Please use the model as it is, since the model has already been set to the correct devices and casted to the correct `dtype`.')
+Lutfen eksik paketleri yukle: 'pip install timm attrdict einops sentencepiece'

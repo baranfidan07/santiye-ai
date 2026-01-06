@@ -1,0 +1,16 @@
+# Torch with CUDA 12.1 (RTX 4060 Support)
+--find-links https://download.pytorch.org/whl/cu121/torch_stable.html
+torch
+torchvision
+torchaudio
+
+# AI Model Libraries
+transformers>=4.37.0
+accelerate
+bitsandbytes
+scipy
+
+# Vision & Utils
+opencv-python
+pillow
+qwen-vl-utils
