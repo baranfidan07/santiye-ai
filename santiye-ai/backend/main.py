@@ -194,7 +194,11 @@ Recent conversations:
 
         api_messages = [{"role": "system", "content": final_system_prompt}]
         for msg in messages:
-             api_messages.append({"role": msg.role, "content": msg.content})
+             # Handle both Pydantic models (from API) and Dicts (from Webhook)
+             if isinstance(msg, dict):
+                 api_messages.append({"role": msg['role'], "content": msg['content']})
+             else:
+                 api_messages.append({"role": msg.role, "content": msg.content})
 
         response = client.chat.completions.create(
             model="deepseek-chat",
