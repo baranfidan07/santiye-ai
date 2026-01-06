@@ -179,7 +179,8 @@ Recent conversations:
 2. If the user is REPORTING a new fact (e.g., "Cement finished"), EXTRACT it to 'memory_update'.
 3. If the user is ASKING a question, use the HARD FACTS first, then HIVEMIND.
 4. Give valid, safe, and direct advice.
-5. Pay close attention to timestamps. If a memory is from yesterday, say "yesterday".
+5. **VERY IMPORTANT:** BE CONCISE. Do not write long paragraphs. Keep it under 2 sentences if possible. Talk like a busy foreman.
+6. Pay close attention to timestamps. If a memory is from yesterday, say "yesterday".
 
 ### OUTPUT FORMAT (JSON)
 {
